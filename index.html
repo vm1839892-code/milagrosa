@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1049,7 +1048,7 @@ footer a:hover {
   <div class="hero-brand">
     <h1>MILAGROSA BIO INSTINTO</h1>
     <div class="hero-logo">
-      <img src="logo2.jpg" alt="Logo de Milagrosa Bio Instinto">
+      <img src="instinto3.jpg" alt="Logo de Milagrosa Bio Instinto">
     </div>
   </div>
 
@@ -1503,6 +1502,11 @@ document.getElementById("fecha").value = fechaLocal;
 actualizarTotal();
 
 
+// TEMPORIZADOR DEL MENSAJE
+
+let temporizadorMensaje;
+
+
 // ENVIAR PEDIDO A GOOGLE SHEETS
 
 document.getElementById("orderForm")
@@ -1515,6 +1519,8 @@ document.getElementById("orderForm")
   const mensaje = document.getElementById("mensaje-pedido");
 
   if (boton.disabled) return;
+
+  clearTimeout(temporizadorMensaje);
 
   const fecha = document.getElementById("fecha").value;
   const nombre = document.getElementById("nombre").value.trim();
@@ -1559,9 +1565,14 @@ document.getElementById("orderForm")
     actualizarTotal();
 
     mensaje.textContent =
-      "¡Tu solicitud fue enviada! Revisa la hoja de Google Sheets para confirmar que el pedido quedó registrado.";
+      "¡Gracias por confirmar tu pedido! Enseguida le comunicamos.";
 
     mensaje.className = "mensaje-pedido exito";
+
+    temporizadorMensaje = setTimeout(function() {
+      mensaje.textContent = "";
+      mensaje.className = "mensaje-pedido";
+    }, 4000);
 
     if(typeof fbq === "function") {
       fbq("track","Lead");
