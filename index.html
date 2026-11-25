@@ -4,10 +4,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#123c29">
+<meta name="theme-color" content="#030611">
 <title>Milagrosa Bio Instinto | Bolivia</title>
 <meta name="description" content="Conoce Milagrosa Bio Instinto y sus presentaciones. Realiza tu pedido por WhatsApp con envío en Bolivia.">
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- FACEBOOK PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -27,632 +32,998 @@ fbq('track', 'PageView');
 
 <style>
 :root {
---verde:#123c29;
---verde2:#1e7045;
---dorado:#e9b943;
---crema:#fffaf0;
---oscuro:#202820;
---whatsapp:#25D366;
+  --verde:#55f2d0;
+  --azul:#27baff;
+  --morado:#bd83ff;
+  --whatsapp:#25D366;
+  --fondo:#030611;
+  --linea:rgba(85,242,208,.34);
+  --texto:#f2f7ff;
+  --muted:#b7c5dc;
 }
 
 * {
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html {
-scroll-behavior:smooth;
+  scroll-behavior:smooth;
+  scroll-padding-top:90px;
 }
 
 body {
-font-family:Arial, sans-serif;
-color:var(--oscuro);
-background:white;
-line-height:1.6;
+  font-family:'Inter',Arial,sans-serif;
+  color:var(--texto);
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(0,220,255,.13),transparent 32%),
+    radial-gradient(ellipse at 88% 34%,rgba(183,105,255,.15),transparent 34%),
+    radial-gradient(ellipse at 48% 88%,rgba(255,65,180,.08),transparent 36%),
+    #030611;
+  line-height:1.65;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background-image:
+    linear-gradient(rgba(39,186,255,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(189,131,255,.035) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+body::after {
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.5;
+  background-image:
+    radial-gradient(2px 2px at 12% 22%,#fff 45%,transparent 60%),
+    radial-gradient(2px 2px at 74% 16%,#55f2d0 45%,transparent 60%),
+    radial-gradient(1.5px 1.5px at 38% 68%,#bd83ff 45%,transparent 60%),
+    radial-gradient(2px 2px at 88% 78%,#27baff 45%,transparent 60%),
+    radial-gradient(1.5px 1.5px at 22% 88%,#fff 45%,transparent 60%),
+    radial-gradient(2px 2px at 56% 42%,#ff78ce 45%,transparent 60%);
+  background-size:
+    320px 320px,410px 410px,360px 360px,
+    460px 460px,390px 390px,500px 500px;
+  animation:starDrift 38s linear infinite;
+}
+
+@keyframes starDrift {
+  from {
+    background-position:0 0,0 0,0 0,0 0,0 0,0 0;
+  }
+  to {
+    background-position:120px 260px,-180px 210px,
+    210px -160px,-160px -220px,180px 120px,-220px 180px;
+  }
 }
 
 a {
-text-decoration:none;
+  text-decoration:none;
 }
 
+/* NAVEGACIÓN */
+
 header {
-background:var(--verde);
-color:white;
-padding:17px 6%;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-flex-wrap:wrap;
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(3,8,23,.88);
+  color:white;
+  padding:17px 6%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  flex-wrap:wrap;
+  border-bottom:1px solid rgba(85,242,208,.4);
+  backdrop-filter:blur(18px);
+  box-shadow:0 8px 32px rgba(39,186,255,.12);
 }
 
 .logo {
-font-size:23px;
-font-weight:900;
-color:var(--dorado);
+  font-family:'Orbitron',sans-serif;
+  font-size:20px;
+  font-weight:800;
+  letter-spacing:2px;
+  color:#55f2d0;
+  text-shadow:0 0 12px rgba(85,242,208,.8),
+              0 0 28px rgba(39,186,255,.35);
 }
 
 nav {
-display:flex;
-gap:20px;
-flex-wrap:wrap;
+  display:flex;
+  gap:22px;
+  flex-wrap:wrap;
 }
 
 nav a {
-color:white;
-font-size:14px;
+  color:#d5e8ff;
+  font-size:13px;
+  font-weight:600;
+  transition:.25s;
 }
+
+nav a:hover {
+  color:#bd83ff;
+  text-shadow:0 0 12px #bd83ff;
+}
+
+/* PORTADA */
 
 .hero {
-background:linear-gradient(135deg,#102e20,#28764b);
-color:white;
-padding:75px 7%;
-text-align:center;
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 30%,rgba(85,242,208,.16),transparent 28%),
+    radial-gradient(circle at 82% 58%,rgba(189,131,255,.2),transparent 34%),
+    linear-gradient(120deg,#030817 0%,#071a36 52%,#100a2a 100%);
+  color:white;
+  padding:82px 7% 76px;
+  text-align:center;
+  border-bottom:1px solid var(--linea);
 }
 
-.hero h1 {
-font-size:clamp(32px,5vw,55px);
-line-height:1.15;
-margin:20px auto;
-max-width:850px;
+.hero::before {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:430px;
+  height:430px;
+  border:1px solid rgba(85,242,208,.45);
+  border-radius:50%;
+  right:8%;
+  top:50%;
+  transform:translateY(-50%);
+  box-shadow:0 0 35px rgba(85,242,208,.2),
+             inset 0 0 45px rgba(85,242,208,.1);
+  animation:orbitPulse 6s ease-in-out infinite;
 }
 
-/* LOGO CIRCULAR JUNTO AL NOMBRE EN LA PORTADA */
-.hero-brand {
-display:flex;
-align-items:center;
-justify-content:center;
-gap:34px;
-max-width:1080px;
-margin:20px auto;
+.hero::after {
+  content:"";
+  position:absolute;
+  z-index:-1;
+  width:520px;
+  height:170px;
+  border:2px solid rgba(189,131,255,.7);
+  border-radius:50%;
+  right:5%;
+  top:46%;
+  transform:rotate(-28deg);
+  box-shadow:0 0 20px rgba(189,131,255,.45);
+  animation:orbitSpin 18s linear infinite;
 }
 
-.hero-brand h1 {
-margin:0;
+@keyframes orbitPulse {
+  50% {
+    transform:translateY(-50%) scale(1.06);
+    opacity:.65;
+  }
 }
 
-.hero-logo {
-width:250px;
-height:250px;
-flex:0 0 250px;
-transform:translateX(24px);
-border-radius:50%;
-overflow:hidden;
-border:5px solid var(--dorado);
-background:#fff;
-box-shadow:0 8px 24px #0004;
-padding:8px;
-}
-
-.hero-logo img {
-width:100%;
-height:100%;
-display:block;
-object-fit:contain;
-object-position:center;
-border-radius:50%;
-}
-
-@media(max-width:600px) {
-.hero-brand {
-flex-direction:column;
-gap:16px;
-}
-.hero-logo {
-width:200px;
-height:200px;
-flex-basis:200px;
-transform:none;
-}
-}
-
-.hero p {
-max-width:650px;
-margin:15px auto;
-font-size:18px;
+@keyframes orbitSpin {
+  to {
+    transform:rotate(332deg);
+  }
 }
 
 .delivery {
-display:inline-block;
-background:var(--dorado);
-color:#17271b;
-padding:13px 23px;
-border-radius:35px;
-font-weight:bold;
-margin-bottom:12px;
-box-shadow:0 5px 20px #0004;
+  display:inline-block;
+  background:rgba(85,242,208,.09);
+  color:#55f2d0;
+  padding:10px 20px;
+  border-radius:30px;
+  border:1px solid #55f2d0;
+  font-weight:800;
+  letter-spacing:1px;
+  margin-bottom:18px;
+  box-shadow:0 0 15px rgba(85,242,208,.25),
+             0 0 28px rgba(189,131,255,.12);
 }
 
+.hero-brand {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:34px;
+  max-width:1080px;
+  margin:20px auto;
+  position:relative;
+}
+
+.hero-brand h1 {
+  margin:0;
+  max-width:690px;
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(30px,5.2vw,66px);
+  line-height:1.13;
+  font-weight:900;
+  letter-spacing:1px;
+  background:linear-gradient(90deg,#fff 0%,#55f2d0 35%,#27baff 65%,#bd83ff 100%);
+  background-size:200%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  filter:drop-shadow(0 0 14px rgba(0,210,255,.22));
+  animation:titleGlow 6s linear infinite;
+}
+
+@keyframes titleGlow {
+  to {
+    background-position:200% center;
+  }
+}
+
+.hero-logo {
+  width:230px;
+  height:230px;
+  flex:0 0 230px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid #55f2d0;
+  background:#fff;
+  padding:7px;
+  box-shadow:0 0 16px rgba(85,242,208,.75),
+             0 0 42px rgba(39,186,255,.32),
+             0 0 60px rgba(189,131,255,.2);
+}
+
+.hero-logo img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  border-radius:50%;
+}
+
+.hero p {
+  max-width:700px;
+  margin:18px auto 25px;
+  font-size:17px;
+  color:#c6d7ef;
+}
+
+/* BOTONES */
+
 .btn {
-display:inline-block;
-padding:15px 28px;
-border-radius:35px;
-font-weight:bold;
-cursor:pointer;
-border:none;
-font-size:16px;
-transition:.2s;
+  display:inline-block;
+  padding:14px 27px;
+  border-radius:8px;
+  font-weight:800;
+  cursor:pointer;
+  border:1px solid #55f2d0;
+  font-size:14px;
+  letter-spacing:.6px;
+  transition:.25s;
+  text-transform:uppercase;
 }
 
 .btn:hover {
-transform:translateY(-3px);
+  transform:translateY(-4px);
+  box-shadow:0 0 18px rgba(85,242,208,.55),
+             0 0 38px rgba(189,131,255,.25);
 }
 
-.btn-gold {
-background:var(--dorado);
-color:#18271d;
-}
-
-.btn-green {
-background:var(--verde2);
-color:white;
+.btn-gold,.btn-green {
+  background:linear-gradient(105deg,#55f2d0 0%,#27baff 52%,#bd83ff 100%);
+  color:#061222;
+  border-color:#c5fff4;
+  box-shadow:0 0 16px rgba(85,242,208,.28),
+             0 0 28px rgba(189,131,255,.14);
 }
 
 section {
-padding:65px 7%;
+  padding:70px 7%;
 }
 
 .section-title {
-text-align:center;
-color:var(--verde);
-font-size:32px;
-margin-bottom:12px;
+  text-align:center;
+  color:#e9faff;
+  font-family:'Orbitron',sans-serif;
+  font-size:clamp(24px,3vw,34px);
+  font-weight:800;
+  margin-bottom:12px;
+  text-shadow:0 0 14px rgba(39,186,255,.25),
+              0 0 26px rgba(189,131,255,.14);
 }
 
 .section-desc {
-text-align:center;
-max-width:650px;
-margin:0 auto 35px;
-color:#666;
+  text-align:center;
+  max-width:680px;
+  margin:0 auto 38px;
+  color:var(--muted);
 }
+
+/* INFORMACIÓN DEL PRODUCTO */
 
 .about {
-background:var(--crema);
-text-align:center;
+  background:linear-gradient(180deg,rgba(6,18,41,.96),rgba(4,10,25,.96));
+  text-align:center;
 }
 
-/* IMÁGENES GRANDES Y COMPLETAS */
-.product-image {
-width:100%;
-max-width:100%;
-height:390px;
-background:#f5f7f1;
-border-radius:20px;
-margin:25px auto;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-padding:12px;
+.zigzag-stack {
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+  max-width:1080px;
+  margin:30px auto 36px;
 }
 
-.product-image img {
-display:block;
-width:100%;
-height:100%;
-object-fit:contain;
-object-position:center;
+.zigzag-row {
+  display:grid;
+  grid-template-columns:1fr 1.15fr;
+  gap:24px;
+  align-items:start;
 }
 
-#producto .product-image {
-max-width:560px;
-height:460px;
-margin:25px auto;
+.zigzag-row.reverse-row {
+  grid-template-columns:1.15fr 1fr;
 }
 
-.card .product-image {
-height:360px;
-margin:10px auto 20px;
+/* IMÁGENES COMPLETAS SIN RECORTES */
+
+.zigzag-media {
+  width:100%;
+  height:auto;
+  min-height:0;
+  padding:0;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:#f4f7fa;
+  border-radius:18px;
+  border:1px solid rgba(85,242,208,.65);
+  box-shadow:0 8px 30px rgba(0,0,0,.2),
+             0 0 18px rgba(39,186,255,.12);
+  transition:.3s;
 }
 
-@media(max-width:600px) {
-.product-image {
-height:340px;
+.zigzag-media.featured {
+  border:2px solid rgba(189,131,255,.8);
+  box-shadow:0 8px 30px rgba(0,0,0,.2),
+             0 0 22px rgba(189,131,255,.18);
 }
-#producto .product-image {
-height:390px;
+
+.zigzag-media img {
+  display:block;
+  width:100%;
+  height:auto;
+  max-height:420px;
+  padding:0;
+  margin:0;
+  object-fit:contain;
+  object-position:center;
+  border-radius:0;
+  transition:none;
 }
-.card .product-image {
-height:330px;
+
+.zigzag-media:hover {
+  transform:translateY(-5px);
 }
+
+.zigzag-media:hover img {
+  transform:none;
 }
+
+.zigzag-panel {
+  background:linear-gradient(145deg,rgba(11,27,58,.95),rgba(6,14,33,.96));
+  border-radius:16px;
+  padding:22px 24px;
+  height:fit-content;
+  border:1px solid rgba(39,186,255,.35);
+  border-left:4px solid #55f2d0;
+  box-shadow:0 10px 28px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+}
+
+.zigzag-panel.featured {
+  border:1px solid rgba(193,50,255,.65);
+  border-left:4px solid #bd83ff;
+}
+
+.zigzag-panel h3 {
+  color:#8cf8e2;
+  font-family:'Orbitron',sans-serif;
+  font-size:16px;
+  margin-bottom:12px;
+}
+
+.zigzag-intro,.zigzag-list li {
+  font-size:14px;
+  color:#d1def2;
+  line-height:1.6;
+  background:rgba(0,234,255,.045);
+  padding:11px 13px;
+  border-radius:9px;
+}
+
+.zigzag-list {
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.zigzag-list li {
+  position:relative;
+  padding:9px 12px 9px 27px;
+}
+
+.zigzag-list li strong {
+  color:#75efff;
+}
+
+.zigzag-list li::before {
+  content:"✦";
+  position:absolute;
+  left:10px;
+  top:8px;
+  color:#bd83ff;
+}
+
+.about-cta {
+  margin-top:10px;
+}
+
+/* PRODUCTOS Y PRECIOS */
 
 .products {
-background:#f7f9f5;
+  background:linear-gradient(180deg,#050d20,#07152d);
 }
 
 .product-grid {
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-gap:25px;
-max-width:1050px;
-margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:25px;
+  max-width:1100px;
+  margin:auto;
 }
 
 .card {
-background:white;
-padding:28px 22px;
-border-radius:20px;
-text-align:center;
-box-shadow:0 8px 25px #00000012;
-border:1px solid #e8eee8;
-transition:.2s;
+  background:linear-gradient(155deg,rgba(12,29,61,.96),rgba(5,13,31,.98));
+  padding:25px 22px;
+  border-radius:17px;
+  text-align:center;
+  box-shadow:0 12px 30px rgba(0,0,0,.25),
+             0 0 18px rgba(39,186,255,.06);
+  border:1px solid rgba(39,186,255,.3);
+  transition:.3s;
 }
 
 .card:hover {
-transform:translateY(-6px);
+  transform:translateY(-8px);
+  border-color:#55f2d0;
+  box-shadow:0 0 24px rgba(85,242,208,.18),
+             0 0 34px rgba(189,131,255,.1);
 }
 
 .card.featured {
-border:2px solid var(--dorado);
+  border:1px solid rgba(189,131,255,.75);
+  box-shadow:0 0 24px rgba(189,131,255,.15);
+}
+
+.product-image {
+  width:100%;
+  max-width:100%;
+  height:360px;
+  background:linear-gradient(145deg,#fff,#edf3fa);
+  border-radius:12px;
+  margin:12px auto 20px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+  padding:12px;
+  border:1px solid rgba(85,242,208,.55);
+}
+
+.product-image img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
 }
 
 .card h3 {
-color:var(--verde);
-font-size:24px;
-margin:12px;
+  color:#8cf8e2;
+  font-family:'Orbitron',sans-serif;
+  font-size:18px;
+  margin:12px 0;
 }
 
 .units {
-color:var(--verde2);
-font-weight:bold;
-font-size:19px;
+  color:#55f2d0;
+  font-weight:800;
+  font-size:17px;
 }
 
 .price {
-color:var(--verde);
-font-size:34px;
-font-weight:900;
-margin:15px;
+  color:#d6adff;
+  font-family:'Orbitron',sans-serif;
+  font-size:29px;
+  font-weight:800;
+  margin:15px;
+  text-shadow:0 0 12px rgba(189,131,255,.32);
 }
 
 .card ul {
-list-style:none;
-text-align:left;
-margin:20px 0;
+  list-style:none;
+  text-align:left;
+  margin:20px 0;
+  color:#c4d4eb;
 }
 
 .card li {
-margin:9px 0;
+  margin:9px 0;
+  font-size:14px;
 }
 
 .card li::before {
-content:"✓ ";
-color:#168347;
-font-weight:bold;
+  content:"✓ ";
+  color:var(--verde);
+  font-weight:bold;
 }
 
-.card button {
-width:100%;
-}
+/* PASOS DE USO */
 
 .how {
-background:white;
+  background:#050b1b;
 }
 
 .steps {
-max-width:850px;
-margin:auto;
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
+  max-width:1000px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:18px;
 }
 
 .step {
-background:#f4f8f2;
-padding:25px;
-border-radius:15px;
-text-align:center;
+  background:linear-gradient(145deg,rgba(11,29,59,.95),rgba(5,13,30,.98));
+  padding:25px;
+  border-radius:14px;
+  text-align:center;
+  border:1px solid rgba(39,186,255,.28);
+  transition:.25s;
+}
+
+.step:hover {
+  transform:translateY(-5px);
+  border-color:#55f2d0;
+  box-shadow:0 0 20px rgba(85,242,208,.14);
 }
 
 .step span {
-background:var(--verde);
-color:white;
-width:42px;
-height:42px;
-display:inline-flex;
-align-items:center;
-justify-content:center;
-border-radius:50%;
-font-weight:bold;
-font-size:20px;
-margin-bottom:12px;
+  background:linear-gradient(135deg,#55f2d0,#27baff 55%,#bd83ff);
+  color:#00101d;
+  width:42px;
+  height:42px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  font-weight:900;
+  font-size:19px;
+  margin-bottom:12px;
+  box-shadow:0 0 16px rgba(0,234,255,.4);
 }
 
+.step h3 {
+  color:#8cefe0;
+  font-size:15px;
+  margin-bottom:8px;
+}
+
+.step p {
+  color:#b5c5df;
+  font-size:13px;
+}
+
+/* FORMULARIO */
+
 .order-section {
-background:#f4f8f2;
-display:none;
+  background:linear-gradient(145deg,#07152c,#0b1030);
+  display:none;
 }
 
 .order-section.show {
-display:block;
+  display:block;
 }
 
 .form-container {
-max-width:650px;
-background:white;
-padding:30px;
-border-radius:20px;
-margin:auto;
-box-shadow:0 8px 25px #00000012;
+  max-width:650px;
+  background:linear-gradient(145deg,#0c1c3a,#071229);
+  padding:30px;
+  border-radius:18px;
+  margin:auto;
+  border:1px solid rgba(0,234,255,.45);
+  box-shadow:0 0 30px rgba(0,140,255,.14);
 }
 
 .form-container h2 {
-color:var(--verde);
-text-align:center;
-margin-bottom:20px;
+  color:#8cf8e2;
+  text-align:center;
+  margin-bottom:20px;
+  font-family:'Orbitron',sans-serif;
+  font-size:21px;
+}
+
+.form-container p {
+  color:#c1d2eb;
 }
 
 .field {
-margin-bottom:16px;
+  margin-bottom:16px;
 }
 
 .field label {
-display:block;
-font-weight:bold;
-margin-bottom:6px;
+  display:block;
+  font-weight:700;
+  margin-bottom:6px;
+  color:#dceaff;
 }
 
 .field input,
 .field select,
 .field textarea {
-width:100%;
-padding:13px;
-border:1px solid #ccc;
-border-radius:9px;
-font-size:16px;
-background:white;
+  width:100%;
+  padding:13px;
+  border:1px solid rgba(0,234,255,.35);
+  border-radius:8px;
+  font-size:15px;
+  font-family:inherit;
+  background:#040c1d;
+  color:#f0f8ff;
+  outline:none;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color:#55f2d0;
+  box-shadow:0 0 12px rgba(85,242,208,.2);
+}
+
+.field input[type="checkbox"] {
+  accent-color:#00dfff;
 }
 
 .total-box {
-background:#eaf5e9;
-padding:20px;
-border-radius:12px;
-margin:20px 0;
-text-align:center;
+  background:linear-gradient(110deg,rgba(85,242,208,.08),rgba(189,131,255,.09));
+  border:1px solid rgba(85,242,208,.35);
+  padding:20px;
+  border-radius:12px;
+  margin:20px 0;
+  text-align:center;
 }
 
 .total-box strong {
-color:var(--verde);
-font-size:29px;
+  color:#8cf8e2;
+  font-family:'Orbitron',sans-serif;
+  font-size:27px;
 }
 
 .form-container button {
-width:100%;
+  width:100%;
 }
 
-/* MENSAJE DE CONFIRMACIÓN SIN VENTANA EMERGENTE */
 .mensaje-pedido {
-display:none;
-padding:13px;
-margin-top:15px;
-border-radius:10px;
-text-align:center;
-font-weight:bold;
-font-size:14px;
+  display:none;
+  padding:13px;
+  margin-top:15px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:700;
+  font-size:14px;
 }
 
 .mensaje-pedido.exito {
-display:block;
-background:#e9f7ed;
-color:#176b38;
-border:1px solid #b8dfc2;
+  display:block;
+  background:#092e2b;
+  color:#8effd9;
+  border:1px solid #00dca5;
 }
 
 .mensaje-pedido.error {
-display:block;
-background:#fff0ed;
-color:#b42318;
-border:1px solid #f2c2bb;
+  display:block;
+  background:#35151d;
+  color:#ffb6c2;
+  border:1px solid #ff647d;
 }
 
+/* PREGUNTAS FRECUENTES */
+
 .faq {
-max-width:850px;
-margin:auto;
+  max-width:850px;
+  margin:auto;
 }
 
 details {
-background:#f5f7f3;
-padding:18px;
-border-radius:10px;
-margin:12px 0;
+  background:linear-gradient(145deg,#0b1b38,#071229);
+  padding:18px;
+  border:1px solid rgba(0,234,255,.22);
+  border-radius:10px;
+  margin:12px 0;
+  color:#cbd9ed;
 }
 
 summary {
-cursor:pointer;
-color:var(--verde);
-font-weight:bold;
+  cursor:pointer;
+  color:#8cefe0;
+  font-weight:700;
 }
 
-/* ESTILOS DEL FOOTER */
+details p {
+  margin-top:12px;
+  color:#c0cde1;
+}
+
+/* PIE DE PÁGINA */
+
 footer {
-background:linear-gradient(145deg,#0b2118,#123c29 58%,#0b2118);
-color:#eaf1eb;
-padding:58px 7% 22px;
-text-align:center;
-border-top:4px solid var(--dorado);
+  background:linear-gradient(145deg,#030817,#081b3a 58%,#090b25);
+  color:#eaf1ff;
+  padding:55px 7% 22px;
+  text-align:center;
+  border-top:2px solid #55f2d0;
+  box-shadow:0 -8px 30px rgba(39,186,255,.08);
 }
 
 footer h2 {
-color:var(--dorado);
-font-size:27px;
-letter-spacing:.5px;
-margin-bottom:8px;
+  color:#8cf8e2;
+  font-family:'Orbitron',sans-serif;
+  font-size:24px;
+  margin-bottom:8px;
+  text-shadow:0 0 14px rgba(0,234,255,.4);
 }
 
 footer > p {
-color:#d5e1d8;
+  color:#c5d5ec;
 }
 
 footer a {
-color:#f3d58d;
-transition:color .2s, transform .2s;
+  color:#8cefe0;
+  transition:.2s;
 }
 
 footer a:hover {
-color:#fff;
+  color:white;
+  text-shadow:0 0 10px var(--verde);
 }
 
 .footer-links {
-display:flex;
-justify-content:center;
-gap:12px 26px;
-flex-wrap:wrap;
-margin:25px 0 30px;
-padding:17px 0;
-border-top:1px solid #ffffff24;
-border-bottom:1px solid #ffffff24;
+  display:flex;
+  justify-content:center;
+  gap:12px 26px;
+  flex-wrap:wrap;
+  margin:25px 0 30px;
+  padding:17px 0;
+  border-top:1px solid var(--linea);
+  border-bottom:1px solid var(--linea);
 }
 
 .footer-links a {
-font-weight:600;
-font-size:14px;
-}
-
-/* ICONOS FACEBOOK Y TIKTOK EN EL FOOTER */
-.footer-social {
-display:flex;
-justify-content:center;
-align-items:center;
-gap:15px;
-margin:22px 0 32px;
-}
-
-.footer-social a {
-width:48px;
-height:48px;
-display:inline-flex;
-justify-content:center;
-align-items:center;
-border-radius:50%;
-background:#ffffff12;
-border:1px solid #ffffff35;
-color:white;
-box-shadow:0 4px 12px #0003;
-}
-
-.footer-social a:hover {
-transform:translateY(-4px);
-background:var(--dorado);
-color:#10291d;
-}
-
-.footer-social svg {
-width:23px;
-height:23px;
-fill:currentColor;
+  font-weight:600;
+  font-size:14px;
 }
 
 .footer-legal {
-max-width:850px;
-margin:0 auto;
-text-align:center;
+  max-width:850px;
+  margin:0 auto;
+  text-align:center;
 }
 
 .footer-legal > div {
-margin:24px auto;
-padding:20px 24px;
-background:#ffffff0b;
-border:1px solid #ffffff18;
-border-radius:14px;
+  margin:24px auto;
+  padding:20px 24px;
+  background:linear-gradient(120deg,rgba(85,242,208,.045),rgba(189,131,255,.055));
+  border:1px solid rgba(39,186,255,.22);
+  border-radius:14px;
 }
 
 .footer-legal h3 {
-color:#f3d58d;
-font-size:17px;
-margin-bottom:9px;
+  color:#8cefe0;
+  font-size:17px;
+  margin-bottom:9px;
 }
 
 .footer-legal p {
-color:#d5e1d8;
-font-size:14px;
-line-height:1.8;
+  color:#c5d5e9;
+  font-size:13px;
+  line-height:1.8;
 }
 
 .footer-small {
-color:#aebfb3;
-font-size:12px;
-margin-top:28px;
-padding-top:18px;
-border-top:1px solid #ffffff24;
+  color:#91a7c7;
+  font-size:12px;
+  margin-top:28px;
+  padding-top:18px;
+  border-top:1px solid var(--linea);
 }
 
-@media(max-width:600px) {
-footer {
-padding:42px 5% 20px;
-}
-.footer-links {
-gap:13px 18px;
-}
-.footer-legal > div {
-padding:17px 15px;
-}
-}
+/* WHATSAPP FLOTANTE */
 
-/* BOTÓN FLOTANTE WHATSAPP: PERMANECE FIJO AL DESLIZAR */
 .whatsapp {
-position:fixed !important;
-right:22px;
-bottom:25px;
-z-index:1000;
-background:#25D366;
-color:white;
-width:68px;
-height:68px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-box-shadow:0 5px 20px #0005;
-border:3px solid white;
-animation:pulse 1.8s infinite;
-transition:.2s;
+  position:fixed !important;
+  right:22px;
+  bottom:25px;
+  z-index:1000;
+  background:#25D366;
+  color:white;
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 0 0 3px #030611,
+             0 0 18px #25D366,
+             0 0 38px rgba(37,211,102,.4);
+  border:2px solid white;
+  animation:pulse 1.8s infinite;
+  transition:.2s;
 }
 
 .whatsapp:hover {
-transform:scale(1.12);
+  transform:scale(1.12);
 }
 
 .whatsapp svg {
-width:40px;
-height:40px;
-fill:white;
+  width:38px;
+  height:38px;
+  fill:white;
 }
 
 @keyframes pulse {
-0% {
-box-shadow:0 0 0 0 #25D36680;
-}
-70% {
-box-shadow:0 0 0 15px #25D36600;
-}
-100% {
-box-shadow:0 0 0 0 #25D36600;
-}
+  0% {
+    box-shadow:0 0 0 0 #25D36680,0 0 18px #25D366;
+  }
+  70% {
+    box-shadow:0 0 0 15px #25D36600,0 0 18px #25D366;
+  }
+  100% {
+    box-shadow:0 0 0 0 #25D36600,0 0 18px #25D366;
+  }
 }
 
-@media(max-width:600px) {
-header {
-justify-content:center;
+/* CELULARES Y TABLETS */
+
+@media(max-width:860px) {
+  .zigzag-row,
+  .zigzag-row.reverse-row {
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .zigzag-row.reverse-mobile .zigzag-panel {
+    order:-1;
+  }
+
+  .zigzag-media {
+    height:auto;
+    min-height:0;
+    padding:0;
+  }
+
+  .zigzag-media img {
+    width:100%;
+    height:auto;
+    max-height:380px;
+    object-fit:contain;
+  }
+
+  .zigzag-panel {
+    padding:18px 20px;
+  }
 }
-nav {
-justify-content:center;
-gap:12px;
+
+@media(max-width:700px) {
+  header {
+    justify-content:center;
+    padding:15px 5%;
+  }
+
+  nav {
+    justify-content:center;
+    gap:12px 17px;
+  }
+
+  nav a {
+    font-size:12px;
+  }
+
+  .hero {
+    padding:55px 6%;
+  }
+
+  .hero-brand {
+    flex-direction:column;
+    gap:20px;
+  }
+
+  .hero-logo {
+    width:185px;
+    height:185px;
+    flex-basis:185px;
+  }
+
+  .hero::before {
+    width:270px;
+    height:270px;
+    right:50%;
+    transform:translate(50%,-50%);
+  }
+
+  .hero::after {
+    width:330px;
+    right:50%;
+    transform:translateX(50%) rotate(-28deg);
+  }
+
+  section {
+    padding:48px 5%;
+  }
+
+  .zigzag-media img {
+    max-height:340px;
+  }
+
+  .product-image,
+  .card .product-image {
+    height:320px;
+    padding:12px;
+  }
+
+  .form-container {
+    padding:20px;
+  }
+
+  .footer-links {
+    gap:13px 18px;
+  }
+
+  .footer-legal > div {
+    padding:17px 15px;
+  }
+
+  .whatsapp {
+    right:15px;
+    bottom:18px;
+    width:58px;
+    height:58px;
+  }
 }
-.hero {
-padding:55px 6%;
-}
-section {
-padding:48px 5%;
-}
-.form-container {
-padding:20px;
-}
-.whatsapp {
-right:15px;
-bottom:18px;
-}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+  }
+
+  body::after {
+    animation:none;
+  }
 }
 </style>
 </head>
@@ -660,470 +1031,563 @@ bottom:18px;
 <body>
 
 <header>
-<div class="logo">🌿 BIO INSTINTO</div>
-<nav>
-<a href="#inicio">Inicio</a>
-<a href="#producto">Producto</a>
-<a href="#precios">Precios</a>
-<a href="#uso">Cómo usar</a>
-<a href="#contacto">Contacto</a>
-</nav>
+  <div class="logo">✦ BIO INSTINTO</div>
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#producto">Producto</a>
+    <a href="#precios">Precios</a>
+    <a href="#uso">Cómo usar</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
 </header>
 
+<!-- PORTADA -->
+
 <div class="hero" id="inicio">
-<div class="delivery">🏍️ ENVÍO GRATUITO</div>
-<div class="hero-brand">
-<h1>MILAGROSA BIO INSTINTO</h1>
-<div class="hero-logo">
-<img src="logo2.jpg" alt="Logo de Milagrosa Bio Instinto">
+  <div class="delivery">🏍️ ENVÍO GRATUITO</div>
+
+  <div class="hero-brand">
+    <h1>MILAGROSA BIO INSTINTO</h1>
+    <div class="hero-logo">
+      <img src="logo2.jpg" alt="Logo de Milagrosa Bio Instinto">
+    </div>
+  </div>
+
+  <p>
+    Descubre nuestro producto y conoce las diferentes
+    presentaciones disponibles para realizar tu pedido.
+  </p>
+
+  <a href="#precios" class="btn btn-gold">🛒 COMPRAR AHORA</a>
 </div>
-</div>
-<p>
-Descubre nuestro producto y conoce las diferentes
-presentaciones disponibles para realizar tu pedido.
-</p>
-<a href="#precios" class="btn btn-gold">🛒 COMPRAR AHORA</a>
-</div>
+
+<!-- INFORMACIÓN DEL PRODUCTO -->
 
 <section class="about" id="producto">
-<h2 class="section-title">Conoce nuestro producto</h2>
-<div class="product-image">
-<img src="milagrosa2.jpg" alt="Producto Milagrosa Bio Instinto completo">
-</div>
-<h2>Milagrosa Bio Instinto</h2>
-<p class="section-desc">
-Conoce la presentación, características e información
-del producto antes de realizar tu compra.
-Consulta siempre la etiqueta y las indicaciones oficiales.
-</p>
-<a href="#precios" class="btn btn-green">VER PRESENTACIONES</a>
+
+  <h2 class="section-title">Conoce nuestro producto</h2>
+
+  <div class="zigzag-stack">
+
+    <div class="zigzag-row">
+      <div class="zigzag-media">
+        <img src="instinto.jpg" alt="Presentación individual de Milagrosa Bio Instinto">
+      </div>
+
+      <div class="zigzag-panel">
+        <h3>Milagrosa Bio Instinto</h3>
+        <p class="zigzag-intro">
+          Alivia la sensación de cansancio y tensión corporal con la Pomada Milagrosa de Bio Instinto. Su fórmula extra fuerte enriquecida con extractos de Moringa, Cúrcuma (Açafrão da Terra), Árnica y Mentol facilita el masaje relajante, hidrata la piel y ofrece protección desodorante por hasta 12 horas.
+        </p>
+      </div>
+    </div>
+
+    <div class="zigzag-row reverse-row reverse-mobile">
+      <div class="zigzag-panel featured">
+        <h3>Características Principales</h3>
+        <ul class="zigzag-list">
+          <li><strong>Alivio y relajación inmediata:</strong> Ayuda a disminuir la sensación de pesadez y fatiga muscular en espalda, cuello, hombros y piernas.</li>
+          <li><strong>Fórmula natural extra fuerte:</strong> Combina moringa, cúrcuma, árnica, copaíba, alcanfor, mentol, pantenol, omega 3 y salicilato de metilo.</li>
+          <li><strong>Rápida absorción:</strong> Textura cremosa que se desliza fácilmente durante el masaje sin dejar la piel grasosa.</li>
+          <li><strong>Hidratación y cuidado:</strong> Mejora la elasticidad de la piel y brinda frescura continua.</li>
+          <li><strong>Acción desodorante de 12 horas:</strong> Mantiene la piel protegida y con un aroma herbal refrescante.</li>
+        </ul>
+      </div>
+
+      <div class="zigzag-media featured">
+        <img src="milagrosa2.jpg" alt="Producto Milagrosa Bio Instinto completo">
+      </div>
+    </div>
+
+    <div class="zigzag-row">
+      <div class="zigzag-media">
+        <img src="instinto2.jpg" alt="Paquetes y detalle de Milagrosa Bio Instinto">
+      </div>
+
+      <div class="zigzag-panel">
+        <h3>Ingredientes destacados</h3>
+        <ul class="zigzag-list">
+          <li>Extracto de Moringa y Cúrcuma (Açafrão da Terra).</li>
+          <li>Árnica, Copaíba, Mentol y Alcanfor.</li>
+          <li>Salicilato de Metilo, Pantenol, Omega 3 y Trementina.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="about-cta">
+    <a href="#precios" class="btn btn-green">VER PRESENTACIONES</a>
+  </div>
 </section>
+
+<!-- PRESENTACIONES Y PRECIOS -->
 
 <section class="products" id="precios">
-<h2 class="section-title">Elige tu presentación</h2>
-<p class="section-desc">
-Selecciona la cantidad que deseas comprar
-y completa tus datos para realizar tu pedido.
-</p>
+  <h2 class="section-title">Elige tu presentación</h2>
 
-<div class="product-grid">
+  <p class="section-desc">
+    Selecciona la cantidad que deseas comprar
+    y completa tus datos para realizar tu pedido.
+  </p>
 
-<div class="card">
-<div class="product-image">
-<img src="milagrosa1.jpg" alt="Presentación de 1 unidad de Bio Instinto" loading="lazy">
-</div>
-<h3>Paquete básico</h3>
-<div class="units">1 UNIDAD</div>
-<div class="price">Bs. 180</div>
-<ul>
-<li>1 unidad del producto</li>
-<li>Pedido individual</li>
-<li>Envío sujeto a cobertura</li>
-</ul>
-<button class="btn btn-green" onclick="seleccionar(1)">COMPRAR 1 UNIDAD</button>
-</div>
+  <div class="product-grid">
 
-<div class="card featured">
-<div class="product-image">
-<img src="milagrosa4.jpg" alt="Presentación completa de 2 unidades de Bio Instinto" loading="lazy">
-</div>
-<h3>Paquete especial</h3>
-<div class="units">2 UNIDADES</div>
-<div class="price">Bs. 260</div>
-<ul>
-<li>2 unidades del producto</li>
-<li>Precio especial por paquete</li>
-<li>Envío sujeto a cobertura</li>
-</ul>
-<button class="btn btn-green" onclick="seleccionar(2)">COMPRAR 2 UNIDADES</button>
-</div>
+    <div class="card">
+      <div class="product-image">
+        <img src="milagrosa1.jpg" alt="Presentación de 1 unidad de Bio Instinto" loading="lazy">
+      </div>
+      <h3>Paquete básico</h3>
+      <div class="units">1 UNIDAD</div>
+      <div class="price">Bs. 180</div>
+      <ul>
+        <li>1 unidad del producto</li>
+        <li>Pedido individual</li>
+        <li>Envío sujeto a cobertura</li>
+      </ul>
+      <button class="btn btn-green" onclick="seleccionar(1)">COMPRAR 1 UNIDAD</button>
+    </div>
 
-<div class="card">
-<div class="product-image">
-<img src="milagrosa3.jpg" alt="Presentación completa de 3 unidades de Bio Instinto" loading="lazy">
-</div>
-<h3>Paquete completo</h3>
-<div class="units">3 UNIDADES</div>
-<div class="price">Bs. 360</div>
-<ul>
-<li>3 unidades del producto</li>
-<li>Precio especial por paquete</li>
-<li>Envío sujeto a cobertura</li>
-</ul>
-<button class="btn btn-green" onclick="seleccionar(3)">COMPRAR 3 UNIDADES</button>
-</div>
+    <div class="card featured">
+      <div class="product-image">
+        <img src="milagrosa4.jpg" alt="Presentación completa de 2 unidades de Bio Instinto" loading="lazy">
+      </div>
+      <h3>Paquete especial</h3>
+      <div class="units">2 UNIDADES</div>
+      <div class="price">Bs. 260</div>
+      <ul>
+        <li>2 unidades del producto</li>
+        <li>Precio especial por paquete</li>
+        <li>Envío sujeto a cobertura</li>
+      </ul>
+      <button class="btn btn-green" onclick="seleccionar(2)">COMPRAR 2 UNIDADES</button>
+    </div>
 
-</div>
+    <div class="card">
+      <div class="product-image">
+        <img src="milagrosa3.jpg" alt="Presentación completa de 3 unidades de Bio Instinto" loading="lazy">
+      </div>
+      <h3>Paquete completo</h3>
+      <div class="units">3 UNIDADES</div>
+      <div class="price">Bs. 360</div>
+      <ul>
+        <li>3 unidades del producto</li>
+        <li>Precio especial por paquete</li>
+        <li>Envío sujeto a cobertura</li>
+      </ul>
+      <button class="btn btn-green" onclick="seleccionar(3)">COMPRAR 3 UNIDADES</button>
+    </div>
+
+  </div>
 </section>
+
+<!-- MODO DE USO -->
 
 <section class="how" id="uso">
-<h2 class="section-title">¿COMÓ APLICARLO ?</h2>
-<p class="section-desc">
-se aplica sobre la piel limpia y seca realizando masajes constantes hasta su completa absorción, sin enjuagar.
-</p>
+  <h2 class="section-title">¿CÓMO APLICARLO?</h2>
 
-<div class="steps">
+  <p class="section-desc">
+    Se aplica sobre la piel limpia y seca realizando masajes constantes hasta su completa absorción, sin enjuagar.
+  </p>
 
-<div class="step">
-<span>1</span>
-<h3>Limpia la zona</h3>
-<p>Asegúrate de que la piel donde vas a aplicar el producto esté completamente limpia y seca.</p>
-</div>
+  <div class="steps">
+    <div class="step">
+      <span>1</span>
+      <h3>Limpia la zona</h3>
+      <p>Asegúrate de que la piel donde vas a aplicar el producto esté completamente limpia y seca.</p>
+    </div>
 
-<div class="step">
-<span>2</span>
-<h3>Toma una pequeña cantidad</h3>
-<p>Coloca una porción suficiente de la pomada en la palma de tus manos o directamente sobre la zona con molestia muscular o cansancio.</p>
-</div>
+    <div class="step">
+      <span>2</span>
+      <h3>Toma una pequeña cantidad</h3>
+      <p>Coloca una porción suficiente de la pomada en la palma de tus manos o directamente sobre la zona con molestia muscular o cansancio.</p>
+    </div>
 
-<div class="step">
-<span>3</span>
-<h3>Extiende el producto.</h3>
-<p>Esparce la crema de manera uniforme sobre el área deseada.</p>
-</div>
+    <div class="step">
+      <span>3</span>
+      <h3>Extiende el producto</h3>
+      <p>Esparce la crema de manera uniforme sobre el área deseada.</p>
+    </div>
 
-<div class="step">
-<span>4</span>
-<h3>Masajea suavemente.</h3>
-<p>Realiza masajes constantes con movimientos circulares y firmes hasta que la piel absorba la pomada por completo.</p>
-</div>
+    <div class="step">
+      <span>4</span>
+      <h3>Masajea suavemente</h3>
+      <p>Realiza masajes constantes con movimientos circulares y firmes hasta que la piel absorba la pomada por completo.</p>
+    </div>
 
-<div class="step">
-<span>5</span>
-<h3>No enjuagues.</h3>
-<p>Deja actuar el producto sobre la piel; no es necesario retirarlo con agua.</p>
-</div>
+    <div class="step">
+      <span>5</span>
+      <h3>No enjuagues</h3>
+      <p>Deja actuar el producto sobre la piel; no es necesario retirarlo con agua.</p>
+    </div>
 
-<div class="step">
-<span>6</span>
-<h3>Lava tus manos.</h3>
-<p>Al terminar el masaje, lávate bien las manos para evitar llevar residuos del producto (como mentol o alcanfor) a los ojos o mucosas.</p>
-</div>
-
-</div>
+    <div class="step">
+      <span>6</span>
+      <h3>Lava tus manos</h3>
+      <p>Al terminar el masaje, lávate bien las manos para evitar llevar residuos del producto (como mentol o alcanfor) a los ojos o mucosas.</p>
+    </div>
+  </div>
 </section>
+
+<!-- FORMULARIO DE PEDIDO -->
 
 <section class="order-section" id="pedido">
-<div class="form-container">
-<h2>🛒 FORMULARIO DE PEDIDO</h2>
-<p style="text-align:center;margin-bottom:20px">
-Completa tus datos para registrar tu compra.
-</p>
+  <div class="form-container">
+    <h2>🛒 FORMULARIO DE PEDIDO</h2>
 
-<form id="orderForm">
+    <p style="text-align:center;margin-bottom:20px">
+      Completa tus datos para registrar tu compra.
+    </p>
 
-<div class="field">
-<label>Fecha del pedido</label>
-<input type="date" id="fecha" required>
-</div>
+    <form id="orderForm">
 
-<div class="field">
-<label>Nombre completo</label>
-<input type="text" id="nombre" placeholder="Escribe tu nombre completo" maxlength="100" required>
-</div>
+      <div class="field">
+        <label>Fecha del pedido</label>
+        <input type="date" id="fecha" required>
+      </div>
 
-<div class="field">
-<label>Teléfono / WhatsApp</label>
-<input type="tel" id="telefono" placeholder="Ej. 70000000" pattern="[0-9 +()-]{7,20}" required>
-</div>
+      <div class="field">
+        <label>Nombre completo</label>
+        <input type="text" id="nombre" placeholder="Escribe tu nombre completo" maxlength="100" required>
+      </div>
 
-<div class="field">
-<label>Departamento</label>
-<select id="departamento" required>
-<option value="">Selecciona tu departamento</option>
-<option>La Paz</option>
-<option>Santa Cruz</option>
-<option>Cochabamba</option>
-<option>Oruro</option>
-<option>Potosí</option>
-<option>Chuquisaca</option>
-<option>Tarija</option>
-<option>Beni</option>
-<option>Pando</option>
-</select>
-</div>
+      <div class="field">
+        <label>Teléfono / WhatsApp</label>
+        <input type="tel" id="telefono" placeholder="Ej. 70000000" pattern="[0-9 +()-]{7,20}" required>
+      </div>
 
-<div class="field">
-<label>Dirección completa</label>
-<textarea id="direccion" rows="3" maxlength="300" placeholder="Zona, calle, número de casa y referencias" required></textarea>
-</div>
+      <div class="field">
+        <label>Departamento</label>
+        <select id="departamento" required>
+          <option value="">Selecciona tu departamento</option>
+          <option>La Paz</option>
+          <option>Santa Cruz</option>
+          <option>Cochabamba</option>
+          <option>Oruro</option>
+          <option>Potosí</option>
+          <option>Chuquisaca</option>
+          <option>Tarija</option>
+          <option>Beni</option>
+          <option>Pando</option>
+        </select>
+      </div>
 
-<div class="field">
-<label>Cantidad seleccionada</label>
-<select id="cantidad" onchange="actualizarTotal()">
-<option value="1">1 unidad</option>
-<option value="2">2 unidades</option>
-<option value="3">3 unidades</option>
-</select>
-</div>
+      <div class="field">
+        <label>Dirección completa</label>
+        <textarea id="direccion" rows="3" maxlength="300" placeholder="Zona, calle, número de casa y referencias" required></textarea>
+      </div>
 
-<div class="total-box">
-<p>Resumen de tu pedido</p>
-<p id="resumen">1 unidad</p>
-<strong id="total">Bs.99</strong>
-<p style="font-size:12px">
-El costo de envío se confirmará según la ubicación.
-</p>
-</div>
+      <div class="field">
+        <label>Cantidad seleccionada</label>
+        <select id="cantidad" onchange="actualizarTotal()">
+          <option value="1">1 unidad</option>
+          <option value="2">2 unidades</option>
+          <option value="3">3 unidades</option>
+        </select>
+      </div>
 
-<div class="field">
-<label style="font-weight:normal">
-<input type="checkbox" id="privacidad" required style="width:auto">
-Acepto la política de privacidad y el tratamiento
-de mis datos para gestionar mi pedido.
-</label>
-</div>
+      <div class="total-box">
+        <p>Resumen de tu pedido</p>
+        <p id="resumen">1 unidad</p>
+        <strong id="total">Bs. 180</strong>
+        <p style="font-size:12px">
+          El costo de envío se confirmará según la ubicación.
+        </p>
+      </div>
 
-<button type="submit" class="btn btn-green">CONFIRMAR PEDIDO</button>
+      <div class="field">
+        <label style="font-weight:normal">
+          <input type="checkbox" id="privacidad" required style="width:auto">
+          Acepto la política de privacidad y el tratamiento
+          de mis datos para gestionar mi pedido.
+        </label>
+      </div>
 
-<!-- AQUÍ APARECE LA CONFIRMACIÓN SIN VENTANA EMERGENTE -->
-<p id="mensaje-pedido" class="mensaje-pedido" role="status" aria-live="polite"></p>
+      <button type="submit" class="btn btn-green">
+        CONFIRMAR PEDIDO
+      </button>
 
-</form>
-</div>
+      <p id="mensaje-pedido" class="mensaje-pedido" role="status" aria-live="polite"></p>
+    </form>
+  </div>
 </section>
+
+<!-- PREGUNTAS FRECUENTES -->
 
 <section>
-<h2 class="section-title">Preguntas frecuentes</h2>
-<div class="faq">
+  <h2 class="section-title">Preguntas frecuentes</h2>
 
-<details>
-<summary>¿Cómo puedo realizar mi pedido?</summary>
-<p>
-Selecciona una presentación y completa el formulario.
-Tu pedido se enviará para registrarse.
-</p>
-</details>
+  <div class="faq">
 
-<details>
-<summary>¿Realizan envíos a Bolivia?</summary>
-<p>
-Consulta la cobertura, disponibilidad y costo de envío
-para tu departamento.
-</p>
-</details>
+    <details>
+      <summary>¿Cómo puedo realizar mi pedido?</summary>
+      <p>
+        Selecciona una presentación y completa el formulario.
+        Tu pedido se enviará para registrarse.
+      </p>
+    </details>
 
-<details>
-<summary>¿Cómo debo utilizar el producto?</summary>
-<p>
-Esparcirla sobre la piel limpia y seca y masajear con movimientos circulares hasta que se absorba por completo, sin enjuagar.
-</p>
-</details>
+    <details>
+      <summary>¿Realizan envíos a Bolivia?</summary>
+      <p>
+        Consulta la cobertura, disponibilidad y costo de envío
+        para tu departamento.
+      </p>
+    </details>
 
-<details>
-<summary>Frecuencia y precauciones</summary>
-<p>
-• Frecuencia de uso: Puedes aplicarla de 2 a 3 veces al día según la necesidad de alivio o relajación corporal.
-<br>
-• Uso externo únicamente: Evita el contacto con los ojos, mucosas y zonas donde la piel esté irritada, herida o lesionada.
-<br>
-• Contraindicaciones: Según las indicaciones del fabricante Bio Instinto, no se recomienda su uso en niños, mujeres embarazadas, en período de lactancia ni en personas con sensibilidad a alguno de sus componentes. Si notas irritación, suspende su uso.
-</p>
-</details>
+    <details>
+      <summary>¿Cómo debo utilizar el producto?</summary>
+      <p>
+        Esparcirla sobre la piel limpia y seca y masajear con movimientos circulares hasta que se absorba por completo, sin enjuagar.
+      </p>
+    </details>
 
-</div>
+    <details>
+      <summary>Frecuencia y precauciones</summary>
+      <p>
+        - Frecuencia de uso: Puedes aplicarla de 2 a 3 veces al día según la necesidad de alivio o relajación corporal.
+        <br>
+        - Uso externo únicamente: Evita el contacto con los ojos, mucosas y zonas donde la piel esté irritada, herida o lesionada.
+        <br>
+        - Contraindicaciones: Según las indicaciones del fabricante Bio Instinto, no se recomienda su uso en niños, mujeres embarazadas, en período de lactancia ni en personas con sensibilidad a alguno de sus componentes. Si notas irritación, suspende su uso.
+      </p>
+    </details>
+
+  </div>
 </section>
 
+<!-- PIE DE PÁGINA SIN FACEBOOK NI TIKTOK -->
+
 <footer id="contacto">
+  <h2>MILAGROSA BIO INSTINTO</h2>
 
-<h2>MILAGROSA BIO INSTINTO</h2>
-<p>Gracias por visitar nuestra tienda. Estamos para atenderte.</p>
+  <p>Gracias por visitar nuestra tienda. Estamos para atenderte.</p>
 
-<div class="footer-links">
-<a href="#inicio">Inicio</a>
-<a href="#producto">Producto</a>
-<a href="#precios">Precios</a>
-<a href="#uso">Modo de uso</a>
-<a href="#privacidad">Privacidad</a>
-<a href="#terminos">Términos</a>
-</div>
+  <div class="footer-links">
+    <a href="#inicio">Inicio</a>
+    <a href="#producto">Producto</a>
+    <a href="#precios">Precios</a>
+    <a href="#uso">Modo de uso</a>
+    <a href="#privacidad">Privacidad</a>
+    <a href="#terminos">Términos</a>
+  </div>
 
-<!-- SOLO FACEBOOK Y TIKTOK EN EL FOOTER -->
-<div class="footer-social" aria-label="Redes sociales">
+  <div class="footer-legal">
 
-<a href="https://www.facebook.com/TU_PAGINA" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M13.5 21v-8.2h2.8l.42-3.2H13.5V7.56c0-.93.26-1.56 1.6-1.56h1.7V3.14C16.5 3.05 15.48 3 14.3 3c-2.5 0-4.2 1.53-4.2 4.34V9.6H7.3v3.2h2.8V21h3.4z"/>
-</svg>
-</a>
+    <div id="privacidad">
+      <h3>Política de privacidad</h3>
+      <p>
+        Los datos proporcionados en el formulario se utilizan para gestionar pedidos, coordinar entregas y atender consultas de los clientes. Se deben proteger los datos personales y no compartirlos con terceros sin una base legal adecuada. El cliente puede solicitar información sobre el tratamiento de sus datos mediante el contacto comercial.
+      </p>
+      <p>
+        Las tecnologías de seguimiento y publicidad de terceros, como Meta Pixel, deben utilizarse conforme a la normativa aplicable y las preferencias de consentimiento del visitante.
+      </p>
+    </div>
 
-<a href="https://www.tiktok.com/@TU_CUENTA" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M19.6 7.1a6.8 6.8 0 0 1-4.1-1.4v8.1a6.1 6.1 0 1 1-5.3-6.05v3.25a2.9 2.9 0 1 0 2.05 2.78V2.5h3.25c.2 1.85 1.25 3.35 2.95 4.05.38.16.78.27 1.2.33v3.3a9.2 9.2 0 0 1-4.15-1.2"/>
-</svg>
-</a>
+    <div id="terminos">
+      <h3>Términos y condiciones</h3>
+      <p>
+        Los precios están expresados en bolivianos (Bs.). Los pedidos están sujetos a disponibilidad. El costo y tiempo de entrega se confirman según el destino. Las características y el uso del producto deben corresponder a su etiquetado e información oficial.
+      </p>
+    </div>
 
-</div>
+  </div>
 
-<div class="footer-legal">
-
-<div id="privacidad">
-<h3>Política de privacidad</h3>
-<p>Los datos proporcionados en el formulario se utilizan para gestionar pedidos, coordinar entregas y atender consultas de los clientes. Se deben proteger los datos personales y no compartirlos con terceros sin una base legal adecuada. El cliente puede solicitar información sobre el tratamiento de sus datos mediante el contacto comercial.</p>
-<p>Las tecnologías de seguimiento y publicidad de terceros, como Meta Pixel, deben utilizarse conforme a la normativa aplicable y las preferencias de consentimiento del visitante.</p>
-</div>
-
-<div id="terminos">
-<h3>Términos y condiciones</h3>
-<p>Los precios están expresados en bolivianos (Bs.). Los pedidos están sujetos a disponibilidad. El costo y tiempo de entrega se confirman según el destino. Las características y el uso del producto deben corresponder a su etiquetado e información oficial.</p>
-</div>
-
-</div>
-
-<p class="footer-small">
-© 2026 Milagrosa Bio Instinto. Todos los derechos reservados.
-</p>
-
+  <p class="footer-small">
+    © 2026 Milagrosa Bio Instinto. Todos los derechos reservados.
+  </p>
 </footer>
 
-<!-- BOTÓN WHATSAPP FLOTANTE: NO ESTÁ DENTRO DEL FOOTER -->
+<!-- WHATSAPP FLOTANTE -->
+
 <a class="whatsapp"
-href="https://wa.me/59170000000"
-target="_blank"
-rel="noopener noreferrer"
-aria-label="Contactar por WhatsApp">
+   id="whatsappFlotante"
+   href="#"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Contactar por WhatsApp">
 
-<svg viewBox="0 0 32 32"
-xmlns="http://www.w3.org/2000/svg"
-aria-hidden="true">
-<path d="M16 .5C7.45.5.5 7.35.5 15.8c0 2.7.72 5.35 2.1 7.65L.5 31.5l8.3-2.15a15.6 15.6 0 0 0 7.2 1.75h.01c8.55 0 15.5-6.85 15.5-15.3C31.5 7.35 24.55.5 16 .5zm0 27.95c-2.25 0-4.45-.6-6.35-1.75l-.45-.25-4.9 1.3 1.3-4.75-.3-.5a12.3 12.3 0 0 1-1.9-6.7C3.4 8.95 9.05 3.4 16 3.4s12.6 5.55 12.6 12.4-5.65 12.65-12.6 12.65zm6.95-9.45c-.4-.2-2.3-1.15-2.65-1.3-.35-.1-.6-.2-.85.2-.25.4-1 1.3-1.2 1.55-.2.25-.45.3-.85.1-.4-.2-1.7-.6-3.25-1.95-1.2-1.05-1.95-2.3-2.2-2.7-.2-.4-.02-.6.18-.8.18-.18.4-.45.6-.65.2-.2.25-.4.4-.65.1-.25.05-.5-.03-.7-.1-.2-.85-2.05-1.15-2.8-.3-.7-.6-.6-.85-.6h-.75c-.25 0-.7.1-1.05.5-.35.4-1.35 1.3-1.35 3.15s1.4 3.65 1.6 3.9c.2.25 2.75 4.15 6.65 5.8.9.4 1.6.65 2.15.8.9.3 1.7.25 2.35.15.75-.1 2.3-.95 2.65-1.85.35-.9.35-1.7.25-1.85-.1-.15-.35-.25-.75-.45z"/>
-</svg>
-
+  <svg viewBox="0 0 32 32"
+       xmlns="http://www.w3.org/2000/svg"
+       aria-hidden="true">
+    <path d="M16 .5C7.45.5.5 7.35.5 15.8c0 2.7.72 5.35 2.1 7.65L.5 31.5l8.3-2.15a15.6 15.6 0 0 0 7.2 1.75h.01c8.55 0 15.5-6.85 15.5-15.3C31.5 7.35 24.55.5 16 .5zm0 27.95c-2.25 0-4.45-.6-6.35-1.75l-.45-.25-4.9 1.3 1.3-4.75-.3-.5a12.3 12.3 0 0 1-1.9-6.7C3.4 8.95 9.05 3.4 16 3.4s12.6 5.55 12.6 12.4-5.65 12.65-12.6 12.65zm6.95-9.45c-.4-.2-2.3-1.15-2.65-1.3-.35-.1-.6-.2-.85.2-.25.4-1 1.3-1.2 1.55-.2.25-.45.3-.85.1-.4-.2-1.7-.6-3.25-1.95-1.2-1.05-1.95-2.3-2.2-2.7-.2-.4-.02-.6.18-.8.18-.18.4-.45.6-.65.2-.2.25-.4.4-.65.1-.25.05-.5-.03-.7-.1-.2-.85-2.05-1.15-2.8-.3-.7-.6-.6-.85-.6h-.75c-.25 0-.7.1-1.05.5-.35.4-1.35 1.3-1.35 3.15s1.4 3.65 1.6 3.9c.2.25 2.75 4.15 6.65 5.8.9.4 1.6.65 2.15.8.9.3 1.7.25 2.35.15.75-.1 2.3-.95 2.65-1.85.35-.9.35-1.7.25-1.85-.1-.15-.35-.25-.75-.45z"/>
+  </svg>
 </a>
 
-<script>
-// CONFIGURACIÓN DE TU NEGOCIO
-// REEMPLAZA POR TU NÚMERO REAL
-// Incluye 591 y tu número, sin espacios ni signos.
-const WHATSAPP = "59170000000";
+<!-- JAVASCRIPT -->
 
-// URL DE TU HOJA DE CÁLCULO (Google Apps Script)
+<script>
+
+// CONFIGURACIÓN DE WHATSAPP
+
+const WHATSAPP = "59174566810";
+
+const mensajeWhatsApp =
+"¡Hola! 👋 Estoy interesado(a) en Milagrosa Bio Instinto. Quisiera recibir información sobre el producto, sus presentaciones, precios y envíos. ¡Gracias!";
+
+const enlaceWhatsApp =
+"https://wa.me/" + WHATSAPP +
+"?text=" + encodeURIComponent(mensajeWhatsApp);
+
+document.getElementById("whatsappFlotante").href =
+enlaceWhatsApp;
+
+
+// CONEXIÓN CON GOOGLE SHEETS
+
 const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbz_Mpt9BxyWFFOYQbtLBckkDCM1d_NFYExXOfl4Qyv7KdWc3uFHp0CTtjV-lB-boM0m9g/exec";
 
-// PRECIOS DE LOS PAQUETES
+
+// PRECIOS
+
 const precios = {
-1:180,
-2:260,
-3:360
+  1:180,
+  2:260,
+  3:360
 };
 
+
 // SELECCIONAR PRODUCTO
+
 function seleccionar(cantidad) {
-document.getElementById("cantidad").value = cantidad;
-actualizarTotal();
 
-const pedido = document.getElementById("pedido");
-pedido.classList.add("show");
+  document.getElementById("cantidad").value = cantidad;
 
-pedido.scrollIntoView({
-behavior:"smooth",
-block:"start"
-});
+  actualizarTotal();
 
-if(typeof fbq === "function") {
-fbq("track","InitiateCheckout");
+  const pedido = document.getElementById("pedido");
+
+  pedido.classList.add("show");
+
+  pedido.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+  });
+
+  if(typeof fbq === "function") {
+    fbq("track","InitiateCheckout");
+  }
 }
-}
+
 
 // ACTUALIZAR TOTAL
+
 function actualizarTotal() {
-const cantidad = Number(
-document.getElementById("cantidad").value
-);
 
-const total = precios[cantidad];
+  const cantidad = Number(
+    document.getElementById("cantidad").value
+  );
 
-document.getElementById("resumen").textContent =
-cantidad + (cantidad === 1 ? " unidad" : " unidades");
+  const total = precios[cantidad];
 
-document.getElementById("total").textContent =
-"Bs. " + total;
+  document.getElementById("resumen").textContent =
+    cantidad + (cantidad === 1 ? " unidad" : " unidades");
+
+  document.getElementById("total").textContent =
+    "Bs. " + total;
 }
 
+
 // FECHA ACTUAL
+
 const hoy = new Date();
 
 const fechaLocal = [
-hoy.getFullYear(),
-String(hoy.getMonth()+1).padStart(2,"0"),
-String(hoy.getDate()).padStart(2,"0")
+  hoy.getFullYear(),
+  String(hoy.getMonth()+1).padStart(2,"0"),
+  String(hoy.getDate()).padStart(2,"0")
 ].join("-");
 
 document.getElementById("fecha").value = fechaLocal;
 
-// GUARDAR PEDIDO EN GOOGLE SHEETS
+actualizarTotal();
+
+
+// ENVIAR PEDIDO A GOOGLE SHEETS
+
 document.getElementById("orderForm")
 .addEventListener("submit", async function(e) {
 
-e.preventDefault();
+  e.preventDefault();
 
-const boton = this.querySelector('button[type="submit"]');
-const mensaje = document.getElementById("mensaje-pedido");
+  const boton = this.querySelector('button[type="submit"]');
 
-if (boton.disabled) return;
+  const mensaje = document.getElementById("mensaje-pedido");
 
-const fecha = document.getElementById("fecha").value;
-const nombre = document.getElementById("nombre").value.trim();
-const telefono = document.getElementById("telefono").value.trim();
-const departamento = document.getElementById("departamento").value;
-const direccion = document.getElementById("direccion").value.trim();
-const cantidad = Number(document.getElementById("cantidad").value);
-const total = precios[cantidad];
+  if (boton.disabled) return;
 
-const datosPedido = {
-fecha, nombre, telefono, departamento, direccion, cantidad, total
-};
+  const fecha = document.getElementById("fecha").value;
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const departamento = document.getElementById("departamento").value;
+  const direccion = document.getElementById("direccion").value.trim();
+  const cantidad = Number(document.getElementById("cantidad").value);
+  const total = precios[cantidad];
 
-boton.disabled = true;
-boton.textContent = "REGISTRANDO PEDIDO...";
+  const datosPedido = {
+    fecha,
+    nombre,
+    telefono,
+    departamento,
+    direccion,
+    cantidad,
+    total
+  };
 
-mensaje.textContent = "";
-mensaje.className = "mensaje-pedido";
+  boton.disabled = true;
+  boton.textContent = "REGISTRANDO PEDIDO...";
 
-try {
+  mensaje.textContent = "";
+  mensaje.className = "mensaje-pedido";
 
-await fetch(GOOGLE_SHEETS_URL, {
-method: "POST",
-mode: "no-cors",
-headers: { "Content-Type": "text/plain;charset=utf-8" },
-body: JSON.stringify(datosPedido)
+  try {
+
+    await fetch(GOOGLE_SHEETS_URL, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{
+        "Content-Type":"text/plain;charset=utf-8"
+      },
+      body:JSON.stringify(datosPedido)
+    });
+
+    this.reset();
+
+    document.getElementById("fecha").value = fechaLocal;
+    document.getElementById("cantidad").value = "1";
+
+    actualizarTotal();
+
+    mensaje.textContent =
+      "¡Tu solicitud fue enviada! Revisa la hoja de Google Sheets para confirmar que el pedido quedó registrado.";
+
+    mensaje.className = "mensaje-pedido exito";
+
+    if(typeof fbq === "function") {
+      fbq("track","Lead");
+    }
+
+  } catch (error) {
+
+    console.error(
+      "No se pudo enviar el pedido a Google Sheets:",
+      error
+    );
+
+    mensaje.textContent =
+      "No se pudo enviar el pedido. Revisa tu conexión e inténtalo nuevamente.";
+
+    mensaje.className = "mensaje-pedido error";
+
+  } finally {
+
+    boton.disabled = false;
+    boton.textContent = "CONFIRMAR PEDIDO";
+
+  }
+
 });
 
-this.reset();
-
-document.getElementById("fecha").value = fechaLocal;
-document.getElementById("cantidad").value = "1";
-
-actualizarTotal();
-
-// CONFIRMACIÓN DENTRO DE LA PÁGINA
-mensaje.textContent =
-"¡Tu solicitud fue enviada! Revisa la hoja de Google Sheets para confirmar que el pedido quedó registrado.";
-
-mensaje.className = "mensaje-pedido exito";
-
-if(typeof fbq === "function") {
-fbq("track","Lead");
-}
-
-} catch (error) {
-
-console.error("No se pudo enviar el pedido a Google Sheets:", error);
-
-// MENSAJE DE ERROR DENTRO DE LA PÁGINA
-mensaje.textContent =
-"No se pudo enviar el pedido. Revisa tu conexión e inténtalo nuevamente.";
-
-mensaje.className = "mensaje-pedido error";
-
-} finally {
-
-boton.disabled = false;
-boton.textContent = "CONFIRMAR PEDIDO";
-
-}
-
-});
 </script>
 
 </body>
